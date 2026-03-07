@@ -1,6 +1,3 @@
-# api-automation-workflows
-Fluxos de automação para integração entre APIs e processamento automático de dados.
-
 # API Automation Workflows
 
 Repositório dedicado a projetos de automação de processos utilizando integração de APIs e workflows automatizados.
