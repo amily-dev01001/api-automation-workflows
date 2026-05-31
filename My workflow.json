@@ -1,0 +1,144 @@
+{
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "updates": [
+          "message"
+        ],
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegramTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        0,
+        0
+      ],
+      "id": "f86eedeb-0496-446f-80e9-5b41ce19616a",
+      "name": "Telegram Trigger",
+      "webhookId": "d5a44fdb-4e44-4470-948a-eb335bc15e4a",
+      "credentials": {
+        "telegramApi": {
+          "id": "nKS2BUwwl89YxuGX",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "https://pastebin.com/raw/NttiSm35",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        208,
+        0
+      ],
+      "id": "2da1c3cd-483b-4ad3-9989-3bb9232846b6",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "models/gemini-3-flash-preview"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=Você é o assistente virtual de RH da nossa empresa. Responda à pergunta do usuário usando APENAS as informações contidas no Manual de RH abaixo. Se o usuário perguntar algo que não está escrito no manual, responda educadamente que não possui essa informação.\n\n========= MANUAL DE RH INTERNO =========\n{{ $json.data }}\n\n========= PERGUNTA DO COLABORADOR =========\n{{ $('Telegram Trigger').item.json.message.text }}"
+            }
+          ]
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.googleGemini",
+      "typeVersion": 1.2,
+      "position": [
+        416,
+        0
+      ],
+      "id": "68d804a3-4220-4fc1-9760-e8c763437a20",
+      "name": "Message a model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "eC4bhBek8qee4Z8S",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Telegram Trigger').item.json.message.chat.id }}",
+        "text": "={{ $json.content.parts[0].text }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        768,
+        0
+      ],
+      "id": "468efa28-4500-48c9-8575-ee5c5381bedc",
+      "name": "Send a text message",
+      "webhookId": "a6b58b8b-218d-4597-8e79-a659228d40e6",
+      "credentials": {
+        "telegramApi": {
+          "id": "nKS2BUwwl89YxuGX",
+          "name": "Telegram account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Telegram Trigger": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Message a model",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Message a model": {
+      "main": [
+        [
+          {
+            "node": "Send a text message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "0094e0f2-6df3-40b1-ae73-9fb46c4ba1e6",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "98436a4be991aa6b45f76b42605e1cfef789b1b7c65654da5766a0a7d664a42a"
+  },
+  "id": "mK81R1iqdMC3TPCn",
+  "tags": []
+}
