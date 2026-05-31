@@ -1,26 +1,50 @@
-# API Automation Workflows
+# Telegram RH Assistant
 
-Repositório dedicado a projetos de automação de processos utilizando integração de APIs e workflows automatizados.
+Assistente virtual de Recursos Humanos desenvolvido com n8n e Telegram para automatizar o atendimento interno de colaboradores.
 
-## Objetivo
-Este projeto tem como objetivo demonstrar automações que conectam diferentes sistemas e APIs para automatizar tarefas, organizar dados e melhorar processos operacionais.
+## Funcionalidades
 
-## Tecnologias utilizadas
-- n8n
-- APIs REST
-- JSON
-- Automação de Workflows
+* Consulta de férias
+* Informações sobre benefícios
+* Banco de horas
+* Vale alimentação
+* Vale transporte
+* Plano de saúde
+* Horário de trabalho
+* Reembolso de despesas
+* Trabalho remoto
+* Décimo terceiro salário
+* Atestados médicos
+* Promoções internas
 
-## Exemplos de automações
-- Integração entre APIs para coleta de dados
-- Automação de envio de informações para sistemas
-- Processamento e organização de dados automaticamente
-- Geração de relatórios automatizados
+## Tecnologias Utilizadas
 
-## Estrutura do projeto
-/workflows  
-/docs  
+* n8n
+* Telegram Bot API
+* JSON
+* Workflow Automation
+* REST APIs
+
+## Fluxo da Automação
+
+Telegram → n8n → Base de Conhecimento RH → Resposta Automática
+
+## Exemplo de Perguntas
+
+* Como funcionam as férias?
+* Quando recebo o vale alimentação?
+* Como solicitar reembolso?
+* Posso trabalhar remoto?
+* Qual o horário de trabalho?
+
+## Estrutura
+
+/workflows
+/docs
+/knowledge-base
 /examples
 
+## Objetivo
 
+Demonstrar conhecimentos em automação de processos, integração de sistemas, chatbots corporativos e fluxos automatizados utilizando n8n.
 
