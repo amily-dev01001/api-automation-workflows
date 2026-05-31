@@ -48,3 +48,16 @@ Telegram → n8n → Base de Conhecimento RH → Resposta Automática
 
 Demonstrar conhecimentos em automação de processos, integração de sistemas, chatbots corporativos e fluxos automatizados utilizando n8n.
 
+## Teste o Bot
+
+Bot Telegram:
+(https://t.me/amily1_bot)
+
+## Base de Conhecimento
+
+https:(https://pastebin.com/raw/NttiSm35)
+
+## Desenvolvido por
+
+Amily Bernardo
+
